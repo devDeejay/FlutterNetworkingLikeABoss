@@ -10,7 +10,7 @@ class APIResponseModel {
   int casesPerOneMillion;
   int deathsPerOneMillion;
   int tests;
-  double testsPerOneMillion;
+  int testsPerOneMillion;
   int affectedCountries;
 
   APIResponseModel(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:networking_like_a_boss/First.dart';
+import 'package:networking_like_a_boss/screens/home/home_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,5 +14,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-const Color kPrimaryColor = const Color(0xFF111517);
