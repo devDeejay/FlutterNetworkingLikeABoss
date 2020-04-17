@@ -28,19 +28,16 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildBody(HomeScreenViewModel homeScreenViewModel) {
+  Widget buildBody(viewModel) {
     /// building our UI
     /// notice we are observing viewModel.apiResponseModel
     /// Hence buildDataWidget will rebuild when apiResponse changes in ViewModel
-    return Container(
-        child: Center(
-            child: buildDataWidget(homeScreenViewModel.apiResponseModel)));
+    return Container(child: Center(child: buildDataWidget(viewModel)));
   }
 
-  FloatingActionButton buildFloatingActionButton(
-      HomeScreenViewModel homeScreenViewModel) {
+  FloatingActionButton buildFloatingActionButton(viewModel) {
     return FloatingActionButton(
-      child: homeScreenViewModel.isLoading
+      child: viewModel.isLoading
           ? CircularProgressIndicator(
               backgroundColor: Colors.white,
             )
@@ -48,17 +45,19 @@ class HomeScreen extends StatelessWidget {
       tooltip: "Get Data from API",
 
       /// Calling our viewModel function
-      onPressed: () => homeScreenViewModel.getDataFromAPI(),
+      onPressed: () => viewModel.getDataFromAPI(),
     );
   }
 
-  buildDataWidget(APIResponseModel apiResponseModel) {
+  buildDataWidget(viewModel) {
+    APIResponseModel apiResponseModel = viewModel.apiResponseModel;
+
     if (apiResponseModel == null)
       return Container(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            "Press the floating action button to get data",
+            "${viewModel.messageToShow}",
             style: TextStyle(fontSize: 24),
             textAlign: TextAlign.center,
           ),
@@ -76,7 +75,6 @@ class HomeScreen extends StatelessWidget {
         "Cases per million: ${apiResponseModel.casesPerOneMillion}\n"
         "Deaths per million: ${apiResponseModel.deathsPerOneMillion}\n"
         "Total Tests Done: ${apiResponseModel.tests}\n"
-        "Tests per million: ${apiResponseModel.testsPerOneMillion}\n"
         "Affected countires : ${apiResponseModel.affectedCountries}\n",
         style: TextStyle(fontSize: 18),
       );

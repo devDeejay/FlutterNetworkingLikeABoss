@@ -10,7 +10,6 @@ class APIResponseModel {
   int casesPerOneMillion;
   int deathsPerOneMillion;
   int tests;
-  int testsPerOneMillion;
   int affectedCountries;
 
   APIResponseModel(
@@ -25,7 +24,6 @@ class APIResponseModel {
       this.casesPerOneMillion,
       this.deathsPerOneMillion,
       this.tests,
-      this.testsPerOneMillion,
       this.affectedCountries});
 
   APIResponseModel.fromJson(Map<String, dynamic> json) {
@@ -40,7 +38,6 @@ class APIResponseModel {
     casesPerOneMillion = json['casesPerOneMillion'];
     deathsPerOneMillion = json['deathsPerOneMillion'];
     tests = json['tests'];
-    testsPerOneMillion = json['testsPerOneMillion'];
     affectedCountries = json['affectedCountries'];
   }
 
@@ -55,9 +52,7 @@ class APIResponseModel {
     data['active'] = this.active;
     data['critical'] = this.critical;
     data['casesPerOneMillion'] = this.casesPerOneMillion;
-    data['deathsPerOneMillion'] = this.deathsPerOneMillion;
     data['tests'] = this.tests;
-    data['testsPerOneMillion'] = this.testsPerOneMillion;
     data['affectedCountries'] = this.affectedCountries;
     return data;
   }
